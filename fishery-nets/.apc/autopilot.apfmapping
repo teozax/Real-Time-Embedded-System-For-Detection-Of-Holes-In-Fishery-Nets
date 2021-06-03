@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="image-smoothing.cpp" path="C:\Users\theoz\Downloads\Real-Time-Embedded-System-For-Detection-Of-Holes-In-Fishery-Nets\fishery-nets\code\src\image-smoothing.cpp"/>
+    <originFiles name="guided-filter.cpp" path="C:\Users\theoz\Downloads\Real-Time-Embedded-System-For-Detection-Of-Holes-In-Fishery-Nets\fishery-nets\code\src\guided-filter.cpp"/>
+    <originFiles name="extra-functions.cpp" path="C:\Users\theoz\Downloads\Real-Time-Embedded-System-For-Detection-Of-Holes-In-Fishery-Nets\fishery-nets\code\src\extra-functions.cpp"/>
+    <originFiles name="core.h" path="C:\Users\theoz\Downloads\Real-Time-Embedded-System-For-Detection-Of-Holes-In-Fishery-Nets\fishery-nets\code\src\core.h"/>
+    <originFiles name="core.cpp" path="C:\Users\theoz\Downloads\Real-Time-Embedded-System-For-Detection-Of-Holes-In-Fishery-Nets\fishery-nets\code\src\core.cpp"/>
+    <originFiles name="cclwindows.cpp" path="C:\Users\theoz\Downloads\Real-Time-Embedded-System-For-Detection-Of-Holes-In-Fishery-Nets\fishery-nets\code\src\cclwindows.cpp"/>
+  </source>
+  <testbench>
+    <originFiles name="test-data" path="C:\Users\theoz\Downloads\Real-Time-Embedded-System-For-Detection-Of-Holes-In-Fishery-Nets\fishery-nets\test-data"/>
+    <originFiles name="test-core.cpp" path="C:\Users\theoz\Downloads\Real-Time-Embedded-System-For-Detection-Of-Holes-In-Fishery-Nets\fishery-nets\code\tb\test-core.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

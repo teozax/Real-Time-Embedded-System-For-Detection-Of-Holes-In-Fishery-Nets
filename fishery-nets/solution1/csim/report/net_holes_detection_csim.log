@@ -1,0 +1,11 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../code/tb/test-core.cpp in debug mode
+   Compiling ../../../code/src/cclwindows.cpp in debug mode
+   Compiling ../../../code/src/core.cpp in debug mode
+   Compiling ../../../code/src/extra-functions.cpp in debug mode
+   Compiling ../../../code/src/guided-filter.cpp in debug mode
+   Compiling ../../../code/src/image-smoothing.cpp in debug mode
+   Generating csim.exe
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

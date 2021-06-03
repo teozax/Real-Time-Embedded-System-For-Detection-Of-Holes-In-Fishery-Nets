@@ -1,0 +1,168 @@
+
+
+================================================================
+== Vivado HLS Report for 'threshold'
+================================================================
+* Date:           Thu Jun  3 20:14:39 2021
+
+* Version:        2019.1 (Build 2552052 on Fri May 24 15:28:33 MDT 2019)
+* Project:        fishery-nets
+* Solution:       solution1
+* Product family: zynquplus
+* Target device:  xczu9eg-ffvb1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   5.00|     2.829|        0.63|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +--------+--------+--------+--------+---------+
+    |     Latency     |     Interval    | Pipeline|
+    |   min  |   max  |   min  |   max  |   Type  |
+    +--------+--------+--------+--------+---------+
+    |  129603|  129603|  129603|  129603|   none  |
+    +--------+--------+--------+--------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+--------+--------+----------+-----------+-----------+--------+----------+
+        |          |     Latency     | Iteration|  Initiation Interval  |  Trip  |          |
+        | Loop Name|   min  |   max  |  Latency |  achieved |   target  |  Count | Pipelined|
+        +----------+--------+--------+----------+-----------+-----------+--------+----------+
+        |- Loop 1  |  129601|  129601|         3|          1|          1|  129600|    yes   |
+        +----------+--------+--------+----------+-----------+-----------+--------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 3
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 5
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 3, States = { 2 3 4 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 5 3 
+3 --> 4 
+4 --> 2 
+5 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 0.65>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %IN_data_stream_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 6 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* @Luminance_img_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 7 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.65ns)   --->   "br label %.preheader.i" [fishery-nets/code/src/extra-functions.cpp:126]   --->   Operation 8 'br' <Predicate = true> <Delay = 0.65>
+
+State 2 <SV = 1> <Delay = 1.09>
+ST_2 : Operation 9 [1/1] (0.00ns)   --->   "%indvar_flatten = phi i17 [ 0, %entry ], [ %add_ln887, %hls_label_5_begin ]" [fishery-nets/code/src/extra-functions.cpp:126]   --->   Operation 9 'phi' 'indvar_flatten' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 10 [1/1] (1.09ns)   --->   "%icmp_ln887 = icmp eq i17 %indvar_flatten, -1472" [fishery-nets/code/src/extra-functions.cpp:126]   --->   Operation 10 'icmp' 'icmp_ln887' <Predicate = true> <Delay = 1.09> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 11 [1/1] (0.86ns)   --->   "%add_ln887 = add i17 %indvar_flatten, 1" [fishery-nets/code/src/extra-functions.cpp:126]   --->   Operation 11 'add' 'add_ln887' <Predicate = true> <Delay = 0.86> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.86> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 12 [1/1] (0.00ns)   --->   "br i1 %icmp_ln887, label %threshold.exit, label %hls_label_5_begin" [fishery-nets/code/src/extra-functions.cpp:126]   --->   Operation 12 'br' <Predicate = true> <Delay = 0.00>
+
+State 3 <SV = 2> <Delay = 2.82>
+ST_3 : Operation 13 [1/1] (0.00ns)   --->   "%tmp_15_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([13 x i8]* @p_str15)" [C:/Xilinx/Vivado/2019.1/common/technology/autopilot/hls/hls_video_core.h:672->C:/Xilinx/Vivado/2019.1/common/technology/autopilot/hls/hls_video_core.h:711->fishery-nets/code/src/extra-functions.cpp:130]   --->   Operation 13 'specregionbegin' 'tmp_15_i' <Predicate = (!icmp_ln887)> <Delay = 0.00>
+ST_3 : Operation 14 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecProtocol(i32 0, [1 x i8]* @p_str229) nounwind" [C:/Xilinx/Vivado/2019.1/common/technology/autopilot/hls/hls_video_core.h:676->C:/Xilinx/Vivado/2019.1/common/technology/autopilot/hls/hls_video_core.h:711->fishery-nets/code/src/extra-functions.cpp:130]   --->   Operation 14 'specprotocol' <Predicate = (!icmp_ln887)> <Delay = 0.00>
+ST_3 : Operation 15 [1/1] (1.83ns)   --->   "%tmp = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %IN_data_stream_V)" [C:/Xilinx/Vivado/2019.1/common/technology/autopilot/hls/hls_video_core.h:679->C:/Xilinx/Vivado/2019.1/common/technology/autopilot/hls/hls_video_core.h:711->fishery-nets/code/src/extra-functions.cpp:130]   --->   Operation 15 'read' 'tmp' <Predicate = (!icmp_ln887)> <Delay = 1.83> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_3 : Operation 16 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecRegionEnd([13 x i8]* @p_str15, i32 %tmp_15_i)" [C:/Xilinx/Vivado/2019.1/common/technology/autopilot/hls/hls_video_core.h:681->C:/Xilinx/Vivado/2019.1/common/technology/autopilot/hls/hls_video_core.h:711->fishery-nets/code/src/extra-functions.cpp:130]   --->   Operation 16 'specregionend' 'empty' <Predicate = (!icmp_ln887)> <Delay = 0.00>
+ST_3 : Operation 17 [1/1] (0.00ns)   --->   "%pix_V = call i32 @_ssdm_op_BitConcatenate.i32.i16.i16(i16 %tmp, i16 0)" [fishery-nets/code/src/extra-functions.cpp:131]   --->   Operation 17 'bitconcatenate' 'pix_V' <Predicate = (!icmp_ln887)> <Delay = 0.00>
+ST_3 : Operation 18 [1/1] (0.99ns)   --->   "%icmp_ln1497 = icmp slt i32 %pix_V, 32780" [fishery-nets/code/src/extra-functions.cpp:134]   --->   Operation 18 'icmp' 'icmp_ln1497' <Predicate = (!icmp_ln887)> <Delay = 0.99> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+
+State 4 <SV = 3> <Delay = 1.83>
+ST_4 : Operation 19 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 129600, i64 129600, i64 129600)"   --->   Operation 19 'speclooptripcount' <Predicate = (!icmp_ln887)> <Delay = 0.00>
+ST_4 : Operation 20 [1/1] (0.00ns)   --->   "%tmp_14_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str734)" [fishery-nets/code/src/extra-functions.cpp:128]   --->   Operation 20 'specregionbegin' 'tmp_14_i' <Predicate = (!icmp_ln887)> <Delay = 0.00>
+ST_4 : Operation 21 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str229) nounwind" [fishery-nets/code/src/extra-functions.cpp:129]   --->   Operation 21 'specpipeline' <Predicate = (!icmp_ln887)> <Delay = 0.00>
+ST_4 : Operation 22 [1/1] (0.00ns)   --->   "%pix_V_1 = call i17 @_ssdm_op_BitConcatenate.i17.i1.i16(i1 %icmp_ln1497, i16 0)" [fishery-nets/code/src/extra-functions.cpp:134]   --->   Operation 22 'bitconcatenate' 'pix_V_1' <Predicate = (!icmp_ln887)> <Delay = 0.00>
+ST_4 : Operation 23 [1/1] (0.00ns)   --->   "%tmp_V_205 = zext i17 %pix_V_1 to i32" [fishery-nets/code/src/extra-functions.cpp:134]   --->   Operation 23 'zext' 'tmp_V_205' <Predicate = (!icmp_ln887)> <Delay = 0.00>
+ST_4 : Operation 24 [1/1] (1.83ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* @Luminance_img_V_V, i32 %tmp_V_205)" [fishery-nets/code/src/extra-functions.cpp:135]   --->   Operation 24 'write' <Predicate = (!icmp_ln887)> <Delay = 1.83> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_4 : Operation 25 [1/1] (0.00ns)   --->   "%empty_34 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str734, i32 %tmp_14_i)" [fishery-nets/code/src/extra-functions.cpp:136]   --->   Operation 25 'specregionend' 'empty_34' <Predicate = (!icmp_ln887)> <Delay = 0.00>
+ST_4 : Operation 26 [1/1] (0.00ns)   --->   "br label %.preheader.i" [fishery-nets/code/src/extra-functions.cpp:127]   --->   Operation 26 'br' <Predicate = (!icmp_ln887)> <Delay = 0.00>
+
+State 5 <SV = 2> <Delay = 0.00>
+ST_5 : Operation 27 [1/1] (0.00ns)   --->   "ret void"   --->   Operation 27 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 5ns, clock uncertainty: 0.625ns.
+
+ <State 1>: 0.656ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('indvar_flatten', fishery-nets/code/src/extra-functions.cpp:126) with incoming values : ('add_ln887', fishery-nets/code/src/extra-functions.cpp:126) [7]  (0.656 ns)
+
+ <State 2>: 1.1ns
+The critical path consists of the following:
+	'phi' operation ('indvar_flatten', fishery-nets/code/src/extra-functions.cpp:126) with incoming values : ('add_ln887', fishery-nets/code/src/extra-functions.cpp:126) [7]  (0 ns)
+	'icmp' operation ('icmp_ln887', fishery-nets/code/src/extra-functions.cpp:126) [8]  (1.1 ns)
+
+ <State 3>: 2.83ns
+The critical path consists of the following:
+	fifo read on port 'IN_data_stream_V' (C:/Xilinx/Vivado/2019.1/common/technology/autopilot/hls/hls_video_core.h:679->C:/Xilinx/Vivado/2019.1/common/technology/autopilot/hls/hls_video_core.h:711->fishery-nets/code/src/extra-functions.cpp:130) [17]  (1.84 ns)
+	'icmp' operation ('icmp_ln1497', fishery-nets/code/src/extra-functions.cpp:134) [20]  (0.991 ns)
+
+ <State 4>: 1.84ns
+The critical path consists of the following:
+	fifo write on port 'Luminance_img_V_V' (fishery-nets/code/src/extra-functions.cpp:135) [23]  (1.84 ns)
+
+ <State 5>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A
